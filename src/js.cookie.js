@@ -34,6 +34,7 @@
 	function init (converter) {
 		function api (key, value, attributes) {
 			var result;
+			var document = {};
 
 			// Write
 
@@ -65,7 +66,7 @@
 				key = encodeURIComponent(String(key));
 				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
 				key = key.replace(/[\(\)]/g, escape);
-
+				
 				return (document.cookie = [
 					key, '=', value,
 					attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
